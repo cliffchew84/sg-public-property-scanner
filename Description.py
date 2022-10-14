@@ -51,8 +51,9 @@ if col1.button("Update the data"):
     # Trigger update script
     execute_data_extraction()
     timing = str(datetime.now().date())
+    col2.write("Data updated as of {}".format(timing))
 
-if timing:
+else:
     col2.write("Data updated as of {}".format(timing))
 
 st.markdown("""
