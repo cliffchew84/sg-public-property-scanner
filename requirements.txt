@@ -8,6 +8,6 @@ pygsheets==2.0.5
 requests==2.27.1
 streamlit==1.13.0
 streamlit_folium==0.6.15
-spacy~=3.4.0
+spacy>=3.0.0,<4.0.0
 https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.0.0/en_core_web_sm-3.0.0.tar.gz#egg=en_core_web_sm
 typer==0.4.0
