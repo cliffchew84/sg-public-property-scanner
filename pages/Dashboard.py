@@ -55,7 +55,12 @@ timing, data = pull_data()
 timing = timing[0][0]
 
 st.markdown("### SG Public Housing Prices since 2022")
-st.write("""Last updated on ***{}***. Remember to clear cache to get the latest data. Best viewed on desktop""".format(timing))
+st.markdown("""
+- Last updated on ***{}***.
+- Remember to clear cache and reload the page to get the latest data. 
+- Best viewed on desktop
+---
+""".format(timing))
 
 lease_min = int(data.lease.min())
 sqm_min = int(data.sqm.min())
@@ -145,20 +150,21 @@ try:
     unsafe_allow_html=True
     )
 
-    try:
-        df = df.reset_index(drop=True)
-        m = folium.Map(location=[df['lat'][0], df['lon'][0]], zoom_start=14)
-        for i in range(0, len(df['period'].tolist())):
-            folium.Marker(
-                [df['lat'][i], df['lon'][i]],
-                tooltip=df['display'][i]
-                ).add_to(m)            
+    map_view = st.checkbox('Show Map')
+    st.write("**The map can be unstable when too many transactionsa loaded.** Please filter the necessary transactions before showing them on a map.")
+    if map_view:
+        try:
+            df = df.reset_index(drop=True)
+            m = folium.Map(location=[df['lat'][0], df['lon'][0]], zoom_start=14)
+            for i in range(0, len(df['period'].tolist())):
+                folium.Marker(
+                    [df['lat'][i], df['lon'][i]],
+                    tooltip=df['display'][i]
+                    ).add_to(m)            
 
-        st.markdown("##### Map")
-        st.markdown("""Please allow the graph to load if you have a lot of data.""")
-        st_data = st_folium(m, height=500, width=500)
-    except:
-        st.write("The map can be a bit unstable. If you see this, please reload the page. ")
+            st_data = st_folium(m, height=500, width=500)
+        except:
+            st.write("**If you see this, Please toggle on and off the 'Show Map' button**")
 
 except:
     st.write("No data found")
