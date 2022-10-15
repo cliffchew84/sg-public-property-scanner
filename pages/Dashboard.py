@@ -81,7 +81,7 @@ try:
             options=tuple(df.model.drop_duplicates().tolist()  + ['All',] ))
 
         search = st.text_input("Street Name - Not Case Sensitive", '')
-        mth_start, mth_end = st.slider('Transaction Month', 0, 12, (0, 12))
+        mth_start, mth_end = st.slider('Transaction Month', 1, 12, (1, 12))
         min_size, max_size = st.slider('Flat Size (sqm)', sqm_min, sqm_max, (sqm_min, sqm_max))
         
         min_lease = st.slider("Min Lease (yrs)", lease_min, 99, lease_min)
