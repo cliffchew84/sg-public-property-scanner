@@ -152,7 +152,7 @@ try:
     )
 
     map_view = st.checkbox('Show Map')
-    st.write("**The map can be unstable when too many transactionsa loaded.** Please filter the necessary transactions before showing them on a map.")
+    st.write("**The map can be unstable when too many transactions are loaded.** Please filter the necessary transactions before showing them on a map.")
     if map_view:
         try:
             df = df.reset_index(drop=True)
