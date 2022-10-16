@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 st.markdown("""
 ### SG Public Housing Prices - 2022
 
-This is a proof-of-concept self-serve tool for anyone who want to search for past HDB resale transactions in Singapore since 2022. I hope this tool can help equip both Singapore property sellers and buyers with more information about their potential transactions. **Please look at my [Medium post]() for how to better use this web service.**
+This is a proof-of-concept self-serve tool for anyone who want to search for past HDB resale transactions in Singapore since 2022. I hope this tool can help equip both Singapore property sellers and buyers with more information about their potential transactions. **Please look at my [Medium post](https://cliffy-gardens.medium.com/a-free-singapore-public-housing-historical-price-research-tool-4c3b6f73054f) for how to better use this web service.**
 
 ---
 
