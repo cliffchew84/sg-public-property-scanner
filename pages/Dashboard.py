@@ -104,6 +104,7 @@ try:
     months_range = [i for i in range(mth_start, mth_end)]
     df = df[df['mth'].isin(months_range)]
 
+    # Setting up the layouts
     col1, col2 = st.columns([1,1])
 
     col1.markdown("##### Average for {} town".format(town_select))
@@ -129,7 +130,7 @@ try:
         })
     )
 
-    col2.write("##### Distribution")
+    col2.write("##### Resale Price Distribution")
     fig = go.Figure()
     for model in df.model.drop_duplicates():
         fig.add_trace(go.Box(y=df[df['model']==model].price, name=model))
