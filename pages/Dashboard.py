@@ -57,7 +57,7 @@ timing = timing[0][0]
 st.markdown("### SG Public Housing Prices since 2022")
 st.markdown("""
 - Last updated on ***{}***.
-- Remember to clear cache and reload the page to get the latest data. 
+- Please click the top right corner button and click ***Clear Cache***, and reload the page to get the latest data.
 - Best viewed on desktop
 ---
 """.format(timing))
