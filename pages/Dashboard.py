@@ -40,7 +40,7 @@ def pull_data():
     
     ## Data Cleaning
     data['block'] = data['block'].astype(str)
-    data['sqm'] = data['sqm'].astype(int)
+    data['sq feet'] = data['sq feet'].astype(float)
     data['price'] = data['price'].astype(int)
     data['lease'] = data['lease'].astype(int)
 
@@ -63,8 +63,8 @@ st.markdown("""
 """.format(timing))
 
 lease_min = int(data.lease.min())
-sqm_min = int(data.sqm.min())
-sqm_max = int(data.sqm.max())
+sq_feet_min = int(data['sq feet'].min())
+sq_feet_max = int(data['sq feet'].max())
 p_min = int(data.price.min())
 p_max = int(data.price.max())
 
@@ -82,7 +82,7 @@ try:
 
         search = st.text_input("Street Name - Not Case Sensitive", '')
         mth_start, mth_end = st.slider('Transaction Month', 1, 12, (1, 12))
-        min_size, max_size = st.slider('Flat Size (sqm)', sqm_min, sqm_max, (sqm_min, sqm_max))
+        min_size, max_size = st.slider('Flat Size (sq feet)', sq_feet_min, sq_feet_max, (sq_feet_min, sq_feet_max))
         
         min_lease = st.slider("Min Lease (yrs)", lease_min, 99, lease_min)
         min_price = st.number_input('Min Price ($)', p_min, p_max, p_min, 1000)
@@ -97,7 +97,7 @@ try:
     else:
         df = df[df['model'].isin(models_select)].reset_index(drop=True)
 
-    df = df[(df['sqm'] >= min_size) & (df['sqm'] <= max_size)]
+    df = df[(df['sq feet'] >= min_size) & (df['sq feet'] <= max_size)]
     df = df[(df['price'] >= min_price) & (df['price'] <= max_price)]
     df = df[df['lease'] >= min_lease]
 
@@ -110,7 +110,7 @@ try:
     col1.markdown("##### Average for {} town".format(town_select))
     summary = df.pivot_table(
         index='model',
-        values=['price', 'sqm', 'lease'], 
+        values=['price', 'sq feet', 'lease'], 
         aggfunc=np.mean, margins=True).reset_index()
 
     summary_count = df.pivot_table(
@@ -122,10 +122,10 @@ try:
     summary = summary_count.merge(summary, how='right')
     summary = summary.sort_values('total')
 
-    summary.columns = ['model', 'total', 'lease', 'price', 'sqm']
+    summary.columns = ['model', 'total', 'lease', 'price', 'sq feet']
     col1.write(summary.style.format(
         {'price': "${:,.2f}", 
-        'sqm': '{:,.2f}',
+        'sq feet': '{:,.2f}',
         'lease': '{:,.1f}'
         })
     )
@@ -147,7 +147,7 @@ try:
 
     st.markdown("##### Transactions")
     st.write(
-        df[['period', 'town', 'flat type', 'block', 'street name', 'model', 'floor', 'sqm', 'lease', 'price']], 
+        df[['period', 'town', 'flat type', 'block', 'street name', 'model', 'floor', 'sq feet', 'lease', 'x_price']], 
     unsafe_allow_html=True
     )
 
