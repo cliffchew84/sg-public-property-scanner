@@ -11,8 +11,9 @@ This is a proof-of-concept self-serve tool for anyone who want to search for pas
 ---
 
 ##### Some points
-1. Housing transaction data is taken from ***[data.gov.sg](https://data.gov.sg/dataset/resale-flat-prices)***.
-2. Home coordinates for the map visualisation are taken from the ***[Singapore OneMap API](https://www.onemap.gov.sg/docs/)***.
-3. Feel free to connect with me on ***[Linkedin](https://www.linkedin.com/in/cliff-chew-kt/)*** if you have any feedback, comments or suggestions.
-4. Anyone who finds value from this can buy me some coffee ***[here](https://www.buymeacoffee.com/cliffchew)***.
+1. **To see the latest results, please remember to clear the cache of the web app.**
+2. Housing transaction data is taken from ***[data.gov.sg](https://data.gov.sg/dataset/resale-flat-prices)***.
+3. Home coordinates for the map visualisation are taken from the ***[Singapore OneMap API](https://www.onemap.gov.sg/docs/)***.
+4. Feel free to connect with me on ***[Linkedin](https://www.linkedin.com/in/cliff-chew-kt/)*** if you have any feedback, comments or suggestions.
+5. Anyone who finds value from this can buy me some coffee ***[here](https://www.buymeacoffee.com/cliffchew)***.
 """)
