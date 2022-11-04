@@ -27,7 +27,7 @@ def _google_creds_as_file():
     temp.flush()
     return temp
 
-@st.cache
+@st.experimental_singleton
 def pull_data():
 
     creds_file = _google_creds_as_file()
@@ -57,7 +57,7 @@ timing = timing[0][0]
 st.markdown("### SG Public Housing Prices since 2022")
 st.markdown("""
 - Last updated on ***{}***.
-- Please click the top right corner button and click ***Clear Cache***, and reload the page to get the latest data.
+- Please click ***Clear Cache*** on the side bar to get the latest data.
 - Best viewed on desktop
 ---
 """.format(timing))
@@ -70,6 +70,9 @@ p_max = int(data.price.max())
 
 try:
     with st.sidebar:
+        if st.button("Clear Cache"):
+            st.experimental_singleton.clear()
+        
         town_select = st.selectbox(
             'Select a town',
             tuple(data.town.drop_duplicates().tolist()))
