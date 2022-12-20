@@ -84,6 +84,8 @@ try:
             options=tuple(df.model.drop_duplicates().tolist()  + ['All',] ))
 
         search = st.text_input("Street Name - Not Case Sensitive", '')
+        
+        year = st.multiselect('Year', df.year.drop_duplicates())
         mth_start, mth_end = st.slider('Transaction Month', 1, 12, (1, 12))
         min_size, max_size = st.slider('Flat Size (sq feet)', sq_feet_min, sq_feet_max, (sq_feet_min, sq_feet_max))
         
@@ -100,6 +102,7 @@ try:
     else:
         df = df[df['model'].isin(models_select)].reset_index(drop=True)
 
+    df = df[df['year'].isin(year)]
     df = df[(df['sq feet'] >= min_size) & (df['sq feet'] <= max_size)]
     df = df[(df['price'] >= min_price) & (df['price'] <= max_price)]
     df = df[df['lease'] >= min_lease]
