@@ -59,6 +59,7 @@ st.markdown("""
 - Last updated on ***{}***.
 - Please click ***Clear Cache*** on the side bar to get the latest data.
 - Best viewed on desktop
+- Please select the "Year" on the left side panel if you don't see any data
 ---
 """.format(timing))
 
