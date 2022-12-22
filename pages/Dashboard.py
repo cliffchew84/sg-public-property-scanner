@@ -59,7 +59,7 @@ st.markdown("""
 - Last updated on ***{}***.
 - Please click ***Clear Cache*** on the side bar to get the latest data.
 - Best viewed on desktop
-- Please select the "Year" on the left side panel if you don't see any data
+- **Please select the "Year" on the left side panel if you don't see any data**
 ---
 """.format(timing))
 
@@ -85,8 +85,7 @@ try:
             options=tuple(df.model.drop_duplicates().tolist()  + ['All',] ))
 
         search = st.text_input("Street Name - Not Case Sensitive", '')
-        
-        year = st.multiselect('Year', df.year.drop_duplicates())
+        year = st.multiselect('Year', df.year.drop_duplicates()) 
         mth_start, mth_end = st.slider('Transaction Month', 1, 12, (1, 12))
         min_size, max_size = st.slider('Flat Size (sq feet)', sq_feet_min, sq_feet_max, (sq_feet_min, sq_feet_max))
         
